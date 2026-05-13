@@ -1,0 +1,239 @@
+/* ================================================
+   JEONG Bank - transfer.css
+   ================================================ */
+
+.page-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.5px;
+  margin-bottom: 1.5rem;
+}
+
+/* 단계 표시 */
+.steps {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.step-item {
+  flex: 1;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--pink-border);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.step-item.active {
+  color: var(--pink-dark);
+  border-bottom-color: var(--pink-dark);
+}
+.step-item.done {
+  color: var(--pink);
+  border-bottom-color: var(--pink);
+}
+
+/* 출금 계좌 선택 */
+.account-select-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.account-select-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1.5px solid var(--pink-border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.account-select-item:hover {
+  border-color: var(--pink);
+  background: var(--pink-light);
+}
+.account-select-item.selected {
+  border-color: var(--pink-dark);
+  background: var(--pink-light);
+}
+
+.account-select-radio {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--pink-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.account-select-item.selected .account-select-radio {
+  border-color: var(--pink-dark);
+  background: var(--pink-dark);
+}
+
+.account-select-item.selected .account-select-radio::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.account-select-info {
+  flex: 1;
+}
+.account-select-type {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+.account-select-number {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--dark);
+}
+.account-select-balance {
+  font-size: 13px;
+  color: var(--text-pink);
+  font-weight: 700;
+}
+
+/* 예금주 확인 */
+.holder-confirm {
+  display: none;
+  background: var(--pink-light);
+  border: 1.5px solid var(--pink);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--dark);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.holder-confirm.show {
+  display: flex;
+}
+.holder-name {
+  font-weight: 700;
+  color: var(--pink-dark);
+}
+
+/* 금액 입력 */
+.amount-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.amount-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1.5px solid var(--pink-border);
+  border-radius: 10px;
+  font-size: 18px;
+  font-family: inherit;
+  font-weight: 700;
+  color: var(--dark);
+  background: var(--pink-light);
+  outline: none;
+  transition: all 0.2s;
+}
+
+.amount-input:focus {
+  border-color: var(--pink);
+  background: #fff;
+}
+.amount-input::placeholder {
+  color: #d4a0b0;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.amount-unit {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--dark);
+  flex-shrink: 0;
+}
+
+.amount-quick {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.amount-quick-btn {
+  padding: 6px 12px;
+  font-size: 12px;
+  font-family: inherit;
+  font-weight: 700;
+  border: 1.5px solid var(--pink-border);
+  background: #fff;
+  color: var(--text-pink);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.amount-quick-btn:hover {
+  background: var(--pink-light);
+  border-color: var(--pink);
+}
+
+/* 이체 요약 */
+.summary {
+  background: var(--dark);
+  border-radius: 20px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1rem;
+  display: none;
+}
+
+.summary.show {
+  display: block;
+}
+.summary-title {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 1rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.summary-label {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+}
+.summary-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+}
+.summary-amount {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--pink);
+  letter-spacing: -0.5px;
+}
+.summary-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 12px 0;
+}

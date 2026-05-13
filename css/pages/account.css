@@ -1,0 +1,202 @@
+/* ================================================
+   JEONG Bank - account.css
+   ================================================ */
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.5px;
+}
+
+.btn-create {
+  padding: 10px 22px;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 700;
+  background: var(--pink);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-create:hover {
+  background: var(--pink-dark);
+  transform: translateY(-1px);
+}
+
+/* 계좌 카드 */
+.account-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 2rem;
+}
+
+.account-card {
+  background: #fff;
+  border-radius: 20px;
+  border: 1px solid var(--pink-border);
+  padding: 1.5rem 1.8rem;
+  transition: transform 0.2s;
+}
+
+.account-card:hover {
+  transform: translateY(-2px);
+}
+
+.account-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.2rem;
+}
+
+.account-type {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.account-number {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 6px;
+  letter-spacing: -0.3px;
+}
+
+.account-balance-wrap {
+  text-align: right;
+}
+.account-balance-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.account-balance {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.5px;
+}
+
+.account-card-bottom {
+  display: flex;
+  gap: 8px;
+  border-top: 1px solid var(--pink-border);
+  padding-top: 1rem;
+}
+
+.btn-action {
+  flex: 1;
+  padding: 10px;
+  font-size: 13px;
+  font-family: inherit;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+}
+
+.btn-deposit {
+  background: var(--pink-light);
+  border: 1.5px solid var(--pink-border);
+  color: var(--text-pink);
+}
+.btn-deposit:hover {
+  background: var(--pink-border);
+}
+
+.btn-withdraw {
+  background: var(--pink-light);
+  border: 1.5px solid var(--pink-border);
+  color: var(--text-pink);
+}
+.btn-withdraw:hover {
+  background: var(--pink-border);
+}
+
+.btn-transfer {
+  background: var(--pink);
+  border: none;
+  color: #fff;
+}
+.btn-transfer:hover {
+  background: var(--pink-dark);
+}
+
+.btn-delete {
+  background: #fff;
+  border: 1.5px solid #ffc0c0;
+  color: #c0392b;
+}
+.btn-delete:hover {
+  background: #fff5f5;
+}
+
+/* 계좌 생성 모달 */
+.type-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.type-item {
+  border: 1.5px solid var(--pink-border);
+  border-radius: 12px;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.type-item:hover {
+  border-color: var(--pink);
+  background: var(--pink-light);
+}
+.type-item.selected {
+  border-color: var(--pink-dark);
+  background: var(--pink-light);
+}
+
+.type-item-icon {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+.type-item-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--dark);
+}
+.type-item-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+@media (max-width: 768px) {
+  .account-card-bottom {
+    flex-wrap: wrap;
+  }
+  .btn-action {
+    flex: 1 1 45%;
+  }
+  .type-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,209 @@
+/* ================================================
+   JEONG Bank - dashboard.css
+   ================================================ */
+
+.welcome {
+  background: var(--dark);
+  border-radius: 20px;
+  padding: 2rem 2.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.welcome-greeting {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 6px;
+}
+.welcome-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+.welcome-name span {
+  color: var(--pink);
+}
+
+.welcome-grade {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(244, 167, 190, 0.2);
+  border: 1px solid rgba(244, 167, 190, 0.4);
+  border-radius: 50px;
+  padding: 4px 12px;
+  font-size: 12px;
+  color: var(--pink);
+  font-weight: 700;
+}
+
+.welcome-right {
+  text-align: right;
+}
+.welcome-date {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 4px;
+}
+.welcome-time {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -1px;
+}
+
+.account-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.account-card {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid var(--pink-border);
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.account-card:hover {
+  transform: translateY(-2px);
+}
+
+.account-type {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.account-number {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 2px;
+}
+.account-balance-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+  text-align: right;
+}
+.account-balance {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.5px;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 2rem;
+}
+
+.menu-card {
+  background: #fff;
+  border-radius: 20px;
+  border: 1px solid var(--pink-border);
+  padding: 1.5rem;
+  text-decoration: none;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  display: block;
+}
+
+.menu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(244, 167, 190, 0.2);
+}
+.menu-card.highlight {
+  background: var(--pink-light);
+  border-color: var(--pink);
+}
+.menu-card.highlight .menu-icon {
+  background: #fff;
+}
+
+.menu-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--pink-light);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 12px;
+  border: 1px solid var(--pink-border);
+}
+
+.menu-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+.menu-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.quick-links {
+  display: flex;
+  gap: 10px;
+}
+
+.quick-btn {
+  flex: 1;
+  padding: 14px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  transition: all 0.2s;
+}
+
+.quick-btn.mypage {
+  background: #fff;
+  border: 1.5px solid var(--pink-border);
+  color: var(--dark);
+}
+.quick-btn.mypage:hover {
+  background: var(--pink-light);
+}
+.quick-btn.logout {
+  background: var(--dark);
+  border: none;
+  color: #fff;
+}
+.quick-btn.logout:hover {
+  background: #333;
+}
+
+@media (max-width: 768px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .welcome {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .welcome-right {
+    text-align: left;
+  }
+}

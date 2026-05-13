@@ -1,0 +1,112 @@
+/* ================================================
+   JEONG Bank - login.css & register.css 공용
+   ================================================ */
+
+.auth-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+}
+
+.auth-card {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid var(--pink-border);
+  padding: 2.8rem 2.5rem;
+  width: 100%;
+  max-width: 460px;
+  animation: fadeUp 0.5s ease both;
+}
+
+.auth-top {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.auth-icon {
+  width: 56px;
+  height: 56px;
+  background: var(--pink-light);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin: 0 auto 1rem;
+  border: 1px solid var(--pink-border);
+}
+
+.auth-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 6px;
+}
+.auth-sub {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.auth-footer {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.auth-footer a {
+  color: var(--pink-dark);
+  text-decoration: none;
+  font-weight: 700;
+}
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+/* 단계 표시 (register) */
+.step-bar {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.step-bar-item {
+  flex: 1;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--pink-border);
+}
+
+.step-bar-item.active {
+  color: var(--pink-dark);
+  border-bottom-color: var(--pink-dark);
+}
+
+/* 섹션 구분선 */
+.divider-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 1.2rem 0;
+}
+
+.divider-section .divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--pink-border);
+}
+
+.divider-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 2rem 1.2rem;
+  }
+}
