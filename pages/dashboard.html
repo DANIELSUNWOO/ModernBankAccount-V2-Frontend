@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JEONG Bank - 대시보드</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --pink: #f4a7be;
+        --pink-dark: #e07898;
+        --pink-light: #fde8ef;
+        --pink-border: #f8c8d8;
+        --dark: #1a1a1a;
+        --text-muted: #888888;
+        --text-pink: #c05878;
+      }
+
+      body {
+        font-family: "Noto Sans KR", sans-serif;
+        background: var(--pink-light);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* NAV */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 48px;
+        background: #ffffff;
+        border-bottom: 1px solid var(--pink-border);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .logo {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--dark);
+        text-decoration: none;
+        letter-spacing: -0.5px;
+      }
+
+      .logo span {
+        color: var(--pink-dark);
+      }
+
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .nav-user {
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+
+      .nav-user strong {
+        color: var(--dark);
+        font-weight: 700;
+      }
+
+      .btn-logout {
+        padding: 7px 18px;
+        font-size: 13px;
+        border: 1.5px solid var(--pink-border);
+        background: transparent;
+        color: var(--text-pink);
+        border-radius: 50px;
+        cursor: pointer;
+        font-family: inherit;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+
+      .btn-logout:hover {
+        background: var(--pink-light);
+      }
+
+      /* MAIN */
+      .main {
+        flex: 1;
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 2.5rem 2rem;
+        width: 100%;
+      }
+
+      /* 환영 섹션 */
+      .welcome {
+        background: var(--dark);
+        border-radius: 20px;
+        padding: 2rem 2.5rem;
+        margin-bottom: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .welcome-left {
+      }
+
+      .welcome-greeting {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.55);
+        margin-bottom: 6px;
+      }
+
+      .welcome-name {
+        font-size: 24px;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 8px;
+        letter-spacing: -0.5px;
+      }
+
+      .welcome-name span {
+        color: var(--pink);
+      }
+
+      .welcome-grade {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background: rgba(244, 167, 190, 0.2);
+        border: 1px solid rgba(244, 167, 190, 0.4);
+        border-radius: 50px;
+        padding: 4px 12px;
+        font-size: 12px;
+        color: var(--pink);
+        font-weight: 700;
+      }
+
+      .welcome-right {
+        text-align: right;
+      }
+
+      .welcome-date {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.4);
+        margin-bottom: 4px;
+      }
+
+      .welcome-time {
+        font-size: 28px;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: -1px;
+      }
+
+      /* 계좌 섹션 */
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .section-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--dark);
+      }
+
+      .section-link {
+        font-size: 13px;
+        color: var(--text-pink);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .section-link:hover {
+        text-decoration: underline;
+      }
+
+      .account-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 2rem;
+      }
+
+      .account-card {
+        background: #fff;
+        border-radius: 16px;
+        border: 1px solid var(--pink-border);
+        padding: 1.2rem 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: transform 0.2s;
+      }
+
+      .account-card:hover {
+        transform: translateY(-2px);
+      }
+
+      .account-left {
+      }
+
+      .account-type {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-bottom: 4px;
+      }
+
+      .account-number {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 2px;
+        letter-spacing: -0.3px;
+      }
+
+      .account-status {
+        display: inline-block;
+        font-size: 11px;
+        padding: 2px 8px;
+        border-radius: 50px;
+        font-weight: 700;
+      }
+
+      .account-status.active {
+        background: #e8f5e9;
+        color: #2e7d32;
+      }
+
+      .account-status.frozen {
+        background: #e3f2fd;
+        color: #1565c0;
+      }
+
+      .account-status.closed {
+        background: #f5f5f5;
+        color: #757575;
+      }
+
+      .account-right {
+        text-align: right;
+      }
+
+      .account-balance-label {
+        font-size: 11px;
+        color: var(--text-muted);
+        margin-bottom: 4px;
+      }
+
+      .account-balance {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--dark);
+        letter-spacing: -0.5px;
+      }
+
+      .account-empty {
+        background: #fff;
+        border-radius: 16px;
+        border: 1.5px dashed var(--pink-border);
+        padding: 2rem;
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 14px;
+      }
+
+      .account-empty a {
+        color: var(--pink-dark);
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      /* 메뉴 그리드 */
+      .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-bottom: 2rem;
+      }
+
+      .menu-card {
+        background: #fff;
+        border-radius: 20px;
+        border: 1px solid var(--pink-border);
+        padding: 1.5rem;
+        text-decoration: none;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        display: block;
+      }
+
+      .menu-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(244, 167, 190, 0.2);
+      }
+
+      .menu-icon {
+        width: 48px;
+        height: 48px;
+        background: var(--pink-light);
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        margin-bottom: 12px;
+        border: 1px solid var(--pink-border);
+      }
+
+      .menu-title {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 4px;
+      }
+
+      .menu-desc {
+        font-size: 12px;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+
+      .menu-card.highlight {
+        background: var(--pink-light);
+        border-color: var(--pink);
+      }
+
+      .menu-card.highlight .menu-icon {
+        background: #fff;
+      }
+
+      /* 하단 바로가기 */
+      .quick-links {
+        display: flex;
+        gap: 10px;
+      }
+
+      .quick-btn {
+        flex: 1;
+        padding: 14px;
+        border-radius: 14px;
+        font-size: 14px;
+        font-family: inherit;
+        font-weight: 700;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        transition: all 0.2s;
+      }
+
+      .quick-btn.mypage {
+        background: #fff;
+        border: 1.5px solid var(--pink-border);
+        color: var(--dark);
+      }
+
+      .quick-btn.mypage:hover {
+        background: var(--pink-light);
+      }
+
+      .quick-btn.logout {
+        background: var(--dark);
+        border: none;
+        color: #fff;
+      }
+
+      .quick-btn.logout:hover {
+        background: #333;
+      }
+
+      footer {
+        padding: 1.5rem 3rem;
+        text-align: center;
+        border-top: 1px solid var(--pink-border);
+        background: #fff;
+        margin-top: auto;
+      }
+
+      footer p {
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .main {
+        animation: fadeUp 0.5s ease both;
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          padding: 1rem 1.5rem;
+        }
+        .main {
+          padding: 1.5rem 1rem;
+        }
+        .menu-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .welcome {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1rem;
+        }
+        .welcome-right {
+          text-align: left;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="../index.html" class="logo">JEONG <span>Bank</span></a>
+      <div class="nav-right">
+        <span class="nav-user"><strong>홍길동</strong> 님</span>
+        <a href="login.html" class="btn-logout">로그아웃</a>
+      </div>
+    </nav>
+
+    <div class="main">
+      <!-- 환영 섹션 -->
+      <div class="welcome">
+        <div class="welcome-left">
+          <div class="welcome-greeting">안녕하세요 👋</div>
+          <div class="welcome-name"><span>홍길동</span> 님, 환영합니다</div>
+          <div class="welcome-grade">🌸 일반 회원</div>
+        </div>
+        <div class="welcome-right">
+          <div class="welcome-date" id="date"></div>
+          <div class="welcome-time" id="time"></div>
+        </div>
+      </div>
+
+      <!-- 내 계좌 -->
+      <div class="section-header">
+        <div class="section-title">내 계좌</div>
+        <a href="account.html" class="section-link">전체 보기 →</a>
+      </div>
+
+      <div class="account-list">
+        <div class="account-card">
+          <div class="account-left">
+            <div class="account-type">입출금(보통)</div>
+            <div class="account-number">JEONG-1778607374409-3586</div>
+            <span class="account-status active">ACTIVE</span>
+          </div>
+          <div class="account-right">
+            <div class="account-balance-label">잔액</div>
+            <div class="account-balance">₩ 2,000,010,000</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 메뉴 -->
+      <div class="section-header">
+        <div class="section-title">메뉴</div>
+      </div>
+
+      <div class="menu-grid">
+        <a href="account.html" class="menu-card">
+          <div class="menu-icon">🏦</div>
+          <div class="menu-title">계좌 관리</div>
+          <div class="menu-desc">계좌 생성, 조회, 삭제</div>
+        </a>
+        <a href="deposit.html" class="menu-card">
+          <div class="menu-icon">📥</div>
+          <div class="menu-title">입금</div>
+          <div class="menu-desc">내 계좌에 입금하기</div>
+        </a>
+        <a href="withdraw.html" class="menu-card">
+          <div class="menu-icon">📤</div>
+          <div class="menu-title">출금</div>
+          <div class="menu-desc">내 계좌에서 출금하기</div>
+        </a>
+        <a href="transfer.html" class="menu-card highlight">
+          <div class="menu-icon">💸</div>
+          <div class="menu-title">이체</div>
+          <div class="menu-desc">피싱 방지 스마트 이체</div>
+        </a>
+        <a href="history.html" class="menu-card">
+          <div class="menu-icon">📋</div>
+          <div class="menu-title">거래 내역</div>
+          <div class="menu-desc">거래 이력 상세 조회</div>
+        </a>
+        <a href="pending.html" class="menu-card highlight">
+          <div class="menu-icon">🔔</div>
+          <div class="menu-title">승인 대기</div>
+          <div class="menu-desc">수신 이체 승인 / 거절</div>
+        </a>
+      </div>
+
+      <!-- 하단 버튼 -->
+      <div class="quick-links">
+        <a href="mypage.html" class="quick-btn mypage">⚙️ 내 정보 수정</a>
+        <a href="login.html" class="quick-btn logout">로그아웃</a>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 JEONG Bank. 피싱 범죄 예방을 위한 스마트 뱅킹 시스템.</p>
+    </footer>
+
+    <script>
+      function updateDateTime() {
+        const now = new Date();
+        const dateEl = document.getElementById("date");
+        const timeEl = document.getElementById("time");
+        if (dateEl && timeEl) {
+          const days = ["일", "월", "화", "수", "목", "금", "토"];
+          dateEl.textContent = `${now.getMonth() + 1}월 ${now.getDate()}일 (${days[now.getDay()]})`;
+          const h = String(now.getHours()).padStart(2, "0");
+          const m = String(now.getMinutes()).padStart(2, "0");
+          timeEl.textContent = `${h}:${m}`;
+        }
+      }
+      updateDateTime();
+      setInterval(updateDateTime, 1000);
+    </script>
+  </body>
+</html>
