@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JEONG Bank - 로그인</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --pink: #f4a7be;
+        --pink-dark: #e07898;
+        --pink-light: #fde8ef;
+        --pink-border: #f8c8d8;
+        --dark: #1a1a1a;
+        --text-muted: #888888;
+        --text-pink: #c05878;
+      }
+
+      body {
+        font-family: "Noto Sans KR", sans-serif;
+        background: var(--pink-light);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 48px;
+        background: #ffffff;
+        border-bottom: 1px solid var(--pink-border);
+      }
+
+      .logo {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--dark);
+        text-decoration: none;
+        letter-spacing: -0.5px;
+      }
+
+      .logo span {
+        color: var(--pink-dark);
+      }
+
+      .nav-link {
+        font-size: 13px;
+        color: var(--text-muted);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .nav-link:hover {
+        color: var(--pink-dark);
+      }
+
+      .main {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 3rem 1.5rem;
+      }
+
+      .card {
+        background: #ffffff;
+        border-radius: 24px;
+        border: 1px solid var(--pink-border);
+        padding: 2.8rem 2.5rem;
+        width: 100%;
+        max-width: 460px;
+        animation: fadeUp 0.5s ease both;
+      }
+
+      .card-top {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .card-icon {
+        width: 56px;
+        height: 56px;
+        background: var(--pink-light);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        margin: 0 auto 1rem;
+        border: 1px solid var(--pink-border);
+      }
+
+      .card-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 6px;
+      }
+      .card-sub {
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+
+      .notice {
+        background: var(--pink-light);
+        border: 1px solid var(--pink-border);
+        border-radius: 10px;
+        padding: 12px 14px;
+        font-size: 12px;
+        color: var(--text-pink);
+        line-height: 1.6;
+        margin-bottom: 20px;
+        font-weight: 500;
+      }
+
+      .form-group {
+        margin-bottom: 18px;
+      }
+
+      .form-label {
+        display: block;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 8px;
+      }
+
+      .ssn-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+      }
+
+      .ssn-front {
+        flex: 1;
+        min-width: 0;
+        padding: 12px 14px;
+        border: 1.5px solid var(--pink-border);
+        border-radius: 10px;
+        font-size: 15px;
+        font-family: inherit;
+        color: var(--dark);
+        background: var(--pink-light);
+        outline: none;
+        transition: all 0.2s;
+      }
+
+      .ssn-front:focus {
+        border-color: var(--pink);
+        background: #fff;
+      }
+      .ssn-front::placeholder {
+        color: #d4a0b0;
+      }
+
+      .ssn-dash {
+        font-size: 18px;
+        color: var(--text-muted);
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+
+      .ssn-back {
+        flex: 1;
+        min-width: 0;
+        padding: 12px 14px;
+        border: 1.5px solid var(--pink-border);
+        border-radius: 10px;
+        font-size: 15px;
+        font-family: inherit;
+        color: var(--dark);
+        background: var(--pink-light);
+        outline: none;
+        text-align: center;
+        transition: all 0.2s;
+      }
+
+      .ssn-back:focus {
+        border-color: var(--pink);
+        background: #fff;
+      }
+      .ssn-back::placeholder {
+        color: #d4a0b0;
+      }
+
+      .ssn-hint {
+        font-size: 11px;
+        color: var(--text-muted);
+        margin-top: 5px;
+      }
+
+      .form-input {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1.5px solid var(--pink-border);
+        border-radius: 10px;
+        font-size: 15px;
+        font-family: inherit;
+        color: var(--dark);
+        background: var(--pink-light);
+        outline: none;
+        transition: all 0.2s;
+      }
+
+      .form-input:focus {
+        border-color: var(--pink);
+        background: #fff;
+      }
+      .form-input::placeholder {
+        color: #d4a0b0;
+      }
+
+      .btn-submit {
+        width: 100%;
+        padding: 14px;
+        background: var(--pink);
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-size: 15px;
+        font-family: inherit;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s;
+        margin-top: 8px;
+      }
+
+      .btn-submit:hover {
+        background: var(--pink-dark);
+        transform: translateY(-1px);
+      }
+
+      .divider {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 1.5rem 0;
+      }
+
+      .divider-line {
+        flex: 1;
+        height: 1px;
+        background: var(--pink-border);
+      }
+      .divider-text {
+        font-size: 12px;
+        color: #bbb;
+      }
+
+      .card-footer {
+        text-align: center;
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+      .card-footer a {
+        color: var(--pink-dark);
+        text-decoration: none;
+        font-weight: 700;
+      }
+      .card-footer a:hover {
+        text-decoration: underline;
+      }
+
+      footer {
+        padding: 1.5rem 3rem;
+        text-align: center;
+        border-top: 1px solid var(--pink-border);
+        background: #fff;
+      }
+
+      footer p {
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 480px) {
+        nav {
+          padding: 1rem 1.5rem;
+        }
+        .card {
+          padding: 2rem 1.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="../index.html" class="logo">JEONG <span>Bank</span></a>
+      <a href="register.html" class="nav-link">회원가입하기 →</a>
+    </nav>
+
+    <div class="main">
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon">🔐</div>
+          <div class="card-title">로그인</div>
+          <div class="card-sub">주민등록번호와 비밀번호로 로그인하세요</div>
+        </div>
+
+        <div class="notice">
+          🛡 <strong>안전 알림</strong> — JEONG Bank는 절대 전화나 문자로
+          비밀번호를 요구하지 않습니다.
+        </div>
+
+        <form>
+          <div class="form-group">
+            <label class="form-label">주민등록번호</label>
+            <div class="ssn-row">
+              <input
+                type="text"
+                class="ssn-front"
+                placeholder="앞 6자리"
+                maxlength="6"
+                inputmode="numeric"
+              />
+              <span class="ssn-dash">-</span>
+              <input
+                type="password"
+                class="ssn-back"
+                placeholder="뒷 1자리"
+                maxlength="1"
+                inputmode="numeric"
+              />
+            </div>
+            <div class="ssn-hint">* 뒷자리는 첫 번째 숫자만 입력합니다</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">비밀번호</label>
+            <input
+              type="password"
+              class="form-input"
+              placeholder="비밀번호를 입력하세요"
+            />
+          </div>
+
+          <button type="submit" class="btn-submit">로그인</button>
+        </form>
+
+        <div class="divider">
+          <div class="divider-line"></div>
+          <span class="divider-text">또는</span>
+          <div class="divider-line"></div>
+        </div>
+
+        <div class="card-footer">
+          계정이 없으신가요? <a href="register.html">회원가입하기</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 JEONG Bank. 피싱 범죄 예방을 위한 스마트 뱅킹 시스템.</p>
+    </footer>
+  </body>
+</html>
