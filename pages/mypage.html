@@ -10,391 +10,8 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-    <style>
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      :root {
-        --pink: #f4a7be;
-        --pink-dark: #e07898;
-        --pink-light: #fde8ef;
-        --pink-border: #f8c8d8;
-        --dark: #1a1a1a;
-        --text-muted: #888888;
-        --text-pink: #c05878;
-      }
-
-      body {
-        font-family: "Noto Sans KR", sans-serif;
-        background: var(--pink-light);
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-
-      nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 18px 48px;
-        background: #ffffff;
-        border-bottom: 1px solid var(--pink-border);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-      }
-
-      .logo {
-        font-size: 20px;
-        font-weight: 700;
-        color: var(--dark);
-        text-decoration: none;
-        letter-spacing: -0.5px;
-      }
-
-      .logo span {
-        color: var(--pink-dark);
-      }
-
-      .nav-back {
-        font-size: 13px;
-        color: var(--text-muted);
-        text-decoration: none;
-        transition: color 0.2s;
-      }
-
-      .nav-back:hover {
-        color: var(--pink-dark);
-      }
-
-      .main {
-        flex: 1;
-        max-width: 560px;
-        margin: 0 auto;
-        padding: 2.5rem 2rem;
-        width: 100%;
-        animation: fadeUp 0.5s ease both;
-      }
-
-      .page-title {
-        font-size: 22px;
-        font-weight: 700;
-        color: var(--dark);
-        letter-spacing: -0.5px;
-        margin-bottom: 1.5rem;
-      }
-
-      /* 프로필 카드 */
-      .profile-card {
-        background: var(--dark);
-        border-radius: 20px;
-        padding: 1.8rem 2rem;
-        margin-bottom: 1.5rem;
-        display: flex;
-        align-items: center;
-        gap: 1.2rem;
-      }
-
-      .profile-avatar {
-        width: 60px;
-        height: 60px;
-        background: rgba(244, 167, 190, 0.2);
-        border: 2px solid rgba(244, 167, 190, 0.4);
-        border-radius: 18px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 26px;
-        flex-shrink: 0;
-      }
-
-      .profile-info {
-      }
-
-      .profile-name {
-        font-size: 20px;
-        font-weight: 700;
-        color: #fff;
-        margin-bottom: 4px;
-        letter-spacing: -0.3px;
-      }
-
-      .profile-grade {
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        background: rgba(244, 167, 190, 0.2);
-        border: 1px solid rgba(244, 167, 190, 0.3);
-        border-radius: 50px;
-        padding: 3px 10px;
-        font-size: 11px;
-        color: var(--pink);
-        font-weight: 700;
-        margin-bottom: 4px;
-      }
-
-      .profile-joined {
-        font-size: 11px;
-        color: rgba(255, 255, 255, 0.4);
-      }
-
-      /* 섹션 */
-      .section {
-        background: #fff;
-        border-radius: 20px;
-        border: 1px solid var(--pink-border);
-        padding: 1.8rem;
-        margin-bottom: 1rem;
-      }
-
-      .section-title {
-        font-size: 14px;
-        font-weight: 700;
-        color: var(--dark);
-        margin-bottom: 1.2rem;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-
-      .form-group {
-        margin-bottom: 14px;
-      }
-      .form-group:last-child {
-        margin-bottom: 0;
-      }
-
-      .form-label {
-        display: block;
-        font-size: 12px;
-        font-weight: 700;
-        color: var(--text-muted);
-        margin-bottom: 6px;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-      }
-
-      .form-input {
-        width: 100%;
-        padding: 11px 14px;
-        border: 1.5px solid var(--pink-border);
-        border-radius: 10px;
-        font-size: 14px;
-        font-family: inherit;
-        color: var(--dark);
-        background: var(--pink-light);
-        outline: none;
-        transition: all 0.2s;
-      }
-
-      .form-input:focus {
-        border-color: var(--pink);
-        background: #fff;
-      }
-      .form-input::placeholder {
-        color: #d4a0b0;
-      }
-
-      .form-input:disabled {
-        background: #f8f8f8;
-        color: var(--text-muted);
-        border-color: #eee;
-        cursor: not-allowed;
-      }
-
-      .form-select {
-        width: 100%;
-        padding: 11px 14px;
-        border: 1.5px solid var(--pink-border);
-        border-radius: 10px;
-        font-size: 14px;
-        font-family: inherit;
-        color: var(--dark);
-        background: var(--pink-light);
-        outline: none;
-        cursor: pointer;
-        appearance: none;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23F4A7BE' stroke-width='2' fill='none'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: right 14px center;
-        padding-right: 36px;
-        transition: all 0.2s;
-      }
-
-      .form-select:focus {
-        border-color: var(--pink);
-        background-color: #fff;
-      }
-
-      .form-readonly {
-        width: 100%;
-        padding: 11px 14px;
-        border: 1.5px solid #eee;
-        border-radius: 10px;
-        font-size: 14px;
-        font-family: inherit;
-        color: var(--text-muted);
-        background: #f8f8f8;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      .form-readonly-badge {
-        font-size: 11px;
-        background: var(--pink-light);
-        color: var(--text-pink);
-        padding: 2px 8px;
-        border-radius: 50px;
-        font-weight: 700;
-      }
-
-      /* VIP 조건 */
-      .vip-progress {
-        background: var(--pink-light);
-        border: 1px solid var(--pink-border);
-        border-radius: 14px;
-        padding: 1rem 1.2rem;
-        margin-top: 1rem;
-      }
-
-      .vip-title {
-        font-size: 12px;
-        font-weight: 700;
-        color: var(--text-pink);
-        margin-bottom: 10px;
-      }
-
-      .vip-condition {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 12px;
-        color: var(--dark);
-        margin-bottom: 6px;
-      }
-
-      .vip-condition:last-child {
-        margin-bottom: 0;
-      }
-
-      .vip-check {
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 10px;
-        flex-shrink: 0;
-      }
-
-      .vip-check.done {
-        background: #e8f5e9;
-        color: #2e7d32;
-      }
-      .vip-check.pending {
-        background: var(--pink-border);
-        color: var(--text-muted);
-      }
-
-      /* 버튼 */
-      .btn-save {
-        width: 100%;
-        padding: 15px;
-        background: var(--pink);
-        color: #fff;
-        border: none;
-        border-radius: 12px;
-        font-size: 15px;
-        font-family: inherit;
-        font-weight: 700;
-        cursor: pointer;
-        transition: all 0.2s;
-        margin-bottom: 10px;
-      }
-
-      .btn-save:hover {
-        background: var(--pink-dark);
-        transform: translateY(-1px);
-      }
-
-      .btn-danger {
-        width: 100%;
-        padding: 13px;
-        background: #fff;
-        color: #c0392b;
-        border: 1.5px solid #ffc0c0;
-        border-radius: 12px;
-        font-size: 14px;
-        font-family: inherit;
-        font-weight: 700;
-        cursor: pointer;
-        transition: all 0.2s;
-      }
-
-      .btn-danger:hover {
-        background: #fff5f5;
-      }
-
-      /* 성공 토스트 */
-      .toast {
-        display: none;
-        position: fixed;
-        bottom: 2rem;
-        left: 50%;
-        transform: translateX(-50%);
-        background: var(--dark);
-        color: #fff;
-        padding: 12px 24px;
-        border-radius: 50px;
-        font-size: 14px;
-        font-weight: 700;
-        z-index: 300;
-        animation: fadeUp 0.3s ease;
-      }
-
-      .toast.show {
-        display: block;
-      }
-
-      footer {
-        padding: 1.5rem 3rem;
-        text-align: center;
-        border-top: 1px solid var(--pink-border);
-        background: #fff;
-      }
-
-      footer p {
-        font-size: 12px;
-        color: var(--text-muted);
-      }
-
-      @keyframes fadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px) translateX(-50%);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0) translateX(-50%);
-        }
-      }
-
-      @media (max-width: 480px) {
-        nav {
-          padding: 1rem 1.5rem;
-        }
-        .main {
-          padding: 1.5rem 1rem;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/pages/mypage.css" />
   </head>
   <body>
     <nav>
@@ -402,50 +19,42 @@
       <a href="dashboard.html" class="nav-back">← 대시보드</a>
     </nav>
 
-    <div class="main">
+    <div class="main-sm">
       <div class="page-title">⚙️ 내 정보 수정</div>
 
-      <!-- 프로필 카드 -->
       <div class="profile-card">
         <div class="profile-avatar">👤</div>
-        <div class="profile-info">
+        <div>
           <div class="profile-name">홍길동</div>
           <div class="profile-grade">🌸 일반 회원</div>
           <div class="profile-joined">가입일: 2025년 5월 13일</div>
         </div>
       </div>
 
-      <!-- 기본 정보 (수정 불가) -->
       <div class="section">
-        <div class="section-title">
+        <div class="section-label">
           🔒 기본 정보
           <span
             style="font-size: 11px; color: var(--text-muted); font-weight: 400"
             >(수정 불가)</span
           >
         </div>
-
         <div class="form-group">
           <label class="form-label">이름</label>
           <div class="form-readonly">
-            홍길동
-            <span class="form-readonly-badge">변경 불가</span>
+            홍길동 <span class="form-readonly-badge">변경 불가</span>
           </div>
         </div>
-
         <div class="form-group">
           <label class="form-label">주민등록번호</label>
           <div class="form-readonly">
-            ●●●●●● - ●●●●●●●
-            <span class="form-readonly-badge">보안</span>
+            ●●●●●● - ●●●●●●● <span class="form-readonly-badge">보안</span>
           </div>
         </div>
       </div>
 
-      <!-- 수정 가능 정보 -->
       <div class="section">
-        <div class="section-title">✏️ 수정 가능 정보</div>
-
+        <div class="section-label">✏️ 수정 가능 정보</div>
         <div class="form-group">
           <label class="form-label">직업</label>
           <select class="form-select">
@@ -457,33 +66,22 @@
             <option value="other">기타</option>
           </select>
         </div>
-
         <div class="form-group">
           <label class="form-label">주소</label>
           <input
             type="text"
             class="form-input"
             value="서울특별시 강남구 테헤란로 123"
-            placeholder="주소를 입력하세요"
           />
         </div>
-
         <div class="form-group">
           <label class="form-label">연봉</label>
-          <input
-            type="number"
-            class="form-input"
-            value="50000000"
-            placeholder="연봉을 입력하세요 (원)"
-            min="0"
-          />
+          <input type="number" class="form-input" value="50000000" />
         </div>
       </div>
 
-      <!-- 비밀번호 변경 -->
       <div class="section">
-        <div class="section-title">🔑 비밀번호 변경</div>
-
+        <div class="section-label">🔑 비밀번호 변경</div>
         <div class="form-group">
           <label class="form-label">현재 비밀번호</label>
           <input
@@ -492,7 +90,6 @@
             placeholder="현재 비밀번호를 입력하세요"
           />
         </div>
-
         <div class="form-group">
           <label class="form-label">새 비밀번호</label>
           <input
@@ -501,7 +98,6 @@
             placeholder="새 비밀번호를 입력하세요"
           />
         </div>
-
         <div class="form-group">
           <label class="form-label">새 비밀번호 확인</label>
           <input
@@ -512,18 +108,14 @@
         </div>
       </div>
 
-      <!-- 등급 정보 -->
       <div class="section">
-        <div class="section-title">⭐ 등급 정보</div>
-
+        <div class="section-label">⭐ 등급 정보</div>
         <div class="form-group">
           <label class="form-label">현재 등급</label>
           <div class="form-readonly">
-            🌸 일반 회원
-            <span class="form-readonly-badge">자동 산정</span>
+            🌸 일반 회원 <span class="form-readonly-badge">자동 산정</span>
           </div>
         </div>
-
         <div class="vip-progress">
           <div class="vip-title">✦ VIP 승급 조건</div>
           <div class="vip-condition">
@@ -534,7 +126,7 @@
             >
           </div>
           <div class="vip-condition">
-            <div class="vip-check pending">✗</div>
+            <div class="vip-check done">✓</div>
             <span
               >계좌 잔액 1억 원 이상
               <span style="color: var(--text-muted)"
@@ -545,37 +137,17 @@
         </div>
       </div>
 
-      <!-- 저장 버튼 -->
       <button class="btn-save" onclick="saveInfo()">변경사항 저장</button>
       <button class="btn-danger" onclick="confirmWithdraw()">회원 탈퇴</button>
     </div>
 
-    <!-- 토스트 메시지 -->
-    <div class="toast" id="toast">✅ 정보가 성공적으로 수정되었습니다</div>
+    <div class="toast" id="toast"></div>
 
     <footer>
       <p>© 2026 JEONG Bank. 피싱 범죄 예방을 위한 스마트 뱅킹 시스템.</p>
     </footer>
 
-    <script>
-      function saveInfo() {
-        const toast = document.getElementById("toast");
-        toast.classList.add("show");
-        setTimeout(() => toast.classList.remove("show"), 3000);
-      }
-
-      function confirmWithdraw() {
-        if (
-          confirm(
-            "정말 회원 탈퇴를 하시겠습니까?\n탈퇴 시 모든 데이터가 삭제되며 복구되지 않습니다.",
-          )
-        ) {
-          alert(
-            "회원 탈퇴가 완료되었습니다.\n(실제 연동 시 서버로 요청이 전송됩니다)",
-          );
-          window.location.href = "../index.html";
-        }
-      }
-    </script>
+    <script src="../js/common.js"></script>
+    <script src="../js/pages/mypage.js"></script>
   </body>
 </html>

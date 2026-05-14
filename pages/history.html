@@ -10,461 +10,8 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-    <style>
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      :root {
-        --pink: #f4a7be;
-        --pink-dark: #e07898;
-        --pink-light: #fde8ef;
-        --pink-border: #f8c8d8;
-        --dark: #1a1a1a;
-        --text-muted: #888888;
-        --text-pink: #c05878;
-      }
-
-      body {
-        font-family: "Noto Sans KR", sans-serif;
-        background: var(--pink-light);
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-
-      nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 18px 48px;
-        background: #ffffff;
-        border-bottom: 1px solid var(--pink-border);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-      }
-
-      .logo {
-        font-size: 20px;
-        font-weight: 700;
-        color: var(--dark);
-        text-decoration: none;
-        letter-spacing: -0.5px;
-      }
-
-      .logo span {
-        color: var(--pink-dark);
-      }
-
-      .nav-back {
-        font-size: 13px;
-        color: var(--text-muted);
-        text-decoration: none;
-        transition: color 0.2s;
-      }
-
-      .nav-back:hover {
-        color: var(--pink-dark);
-      }
-
-      .main {
-        flex: 1;
-        max-width: 720px;
-        margin: 0 auto;
-        padding: 2.5rem 2rem;
-        width: 100%;
-        animation: fadeUp 0.5s ease both;
-      }
-
-      .page-title {
-        font-size: 22px;
-        font-weight: 700;
-        color: var(--dark);
-        letter-spacing: -0.5px;
-        margin-bottom: 1.5rem;
-      }
-
-      /* 계좌 선택 */
-      .account-selector {
-        background: #fff;
-        border-radius: 16px;
-        border: 1px solid var(--pink-border);
-        padding: 1.2rem 1.5rem;
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-
-      .account-selector-label {
-        font-size: 13px;
-        font-weight: 700;
-        color: var(--dark);
-        flex-shrink: 0;
-      }
-
-      .account-selector select {
-        flex: 1;
-        padding: 8px 14px;
-        border: 1.5px solid var(--pink-border);
-        border-radius: 8px;
-        font-size: 13px;
-        font-family: inherit;
-        color: var(--dark);
-        background: var(--pink-light);
-        outline: none;
-        cursor: pointer;
-        appearance: none;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23F4A7BE' stroke-width='2' fill='none'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: right 12px center;
-        padding-right: 32px;
-      }
-
-      .account-selector select:focus {
-        border-color: var(--pink);
-        background-color: #fff;
-      }
-
-      /* 필터 */
-      .filter-bar {
-        display: flex;
-        gap: 8px;
-        margin-bottom: 1.2rem;
-        flex-wrap: wrap;
-      }
-
-      .filter-btn {
-        padding: 7px 16px;
-        font-size: 12px;
-        font-family: inherit;
-        font-weight: 700;
-        border: 1.5px solid var(--pink-border);
-        background: #fff;
-        color: var(--text-muted);
-        border-radius: 50px;
-        cursor: pointer;
-        transition: all 0.2s;
-      }
-
-      .filter-btn.active {
-        background: var(--pink);
-        border-color: var(--pink);
-        color: #fff;
-      }
-
-      .filter-btn:hover:not(.active) {
-        border-color: var(--pink);
-        color: var(--text-pink);
-      }
-
-      /* 요약 카드 */
-      .summary-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        margin-bottom: 1.2rem;
-      }
-
-      .summary-card {
-        background: #fff;
-        border-radius: 14px;
-        border: 1px solid var(--pink-border);
-        padding: 1rem 1.2rem;
-      }
-
-      .summary-card-label {
-        font-size: 11px;
-        color: var(--text-muted);
-        margin-bottom: 4px;
-      }
-
-      .summary-card-value {
-        font-size: 18px;
-        font-weight: 700;
-        letter-spacing: -0.5px;
-      }
-
-      .summary-card-value.out {
-        color: #c0392b;
-      }
-      .summary-card-value.in {
-        color: #2e7d32;
-      }
-
-      /* 거래 내역 리스트 */
-      .history-list {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-      }
-
-      .history-date-label {
-        font-size: 12px;
-        font-weight: 700;
-        color: var(--text-muted);
-        padding: 12px 4px 6px;
-      }
-
-      .history-item {
-        background: #fff;
-        border-radius: 14px;
-        border: 1px solid var(--pink-border);
-        padding: 1rem 1.2rem;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 6px;
-        cursor: pointer;
-        transition: all 0.2s;
-      }
-
-      .history-item:hover {
-        transform: translateX(4px);
-        border-color: var(--pink);
-      }
-
-      .history-icon {
-        width: 40px;
-        height: 40px;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 18px;
-        flex-shrink: 0;
-      }
-
-      .history-icon.send {
-        background: #fff5f5;
-      }
-      .history-icon.receive {
-        background: #f1f8e9;
-      }
-      .history-icon.deposit {
-        background: #e8f5e9;
-      }
-      .history-icon.withdraw {
-        background: #fff3e0;
-      }
-
-      .history-info {
-        flex: 1;
-        min-width: 0;
-      }
-
-      .history-type {
-        font-size: 13px;
-        font-weight: 700;
-        color: var(--dark);
-        margin-bottom: 3px;
-      }
-
-      .history-desc {
-        font-size: 11px;
-        color: var(--text-muted);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      .history-right {
-        text-align: right;
-        flex-shrink: 0;
-      }
-
-      .history-amount {
-        font-size: 15px;
-        font-weight: 700;
-        margin-bottom: 3px;
-      }
-
-      .history-amount.out {
-        color: #c0392b;
-      }
-      .history-amount.in {
-        color: #2e7d32;
-      }
-
-      .history-time {
-        font-size: 11px;
-        color: var(--text-muted);
-      }
-
-      .history-badge {
-        display: inline-block;
-        font-size: 10px;
-        padding: 2px 7px;
-        border-radius: 50px;
-        font-weight: 700;
-        margin-left: 4px;
-      }
-
-      .history-badge.suspicious {
-        background: #fff3e0;
-        color: #e65100;
-      }
-      .history-badge.pending {
-        background: #e3f2fd;
-        color: #1565c0;
-      }
-      .history-badge.completed {
-        background: #e8f5e9;
-        color: #2e7d32;
-      }
-      .history-badge.rejected {
-        background: #ffebee;
-        color: #c62828;
-      }
-
-      /* 상세 모달 */
-      .modal-overlay {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.4);
-        z-index: 200;
-        align-items: flex-end;
-        justify-content: center;
-      }
-
-      .modal-overlay.show {
-        display: flex;
-      }
-
-      .modal {
-        background: #fff;
-        border-radius: 24px 24px 0 0;
-        padding: 2rem;
-        width: 100%;
-        max-width: 560px;
-        animation: slideUp 0.3s ease both;
-      }
-
-      .modal-handle {
-        width: 40px;
-        height: 4px;
-        background: var(--pink-border);
-        border-radius: 2px;
-        margin: 0 auto 1.5rem;
-      }
-
-      .modal-title {
-        font-size: 18px;
-        font-weight: 700;
-        color: var(--dark);
-        margin-bottom: 1.2rem;
-      }
-
-      .detail-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 0;
-        border-bottom: 1px solid var(--pink-border);
-      }
-
-      .detail-row:last-child {
-        border-bottom: none;
-      }
-      .detail-label {
-        font-size: 13px;
-        color: var(--text-muted);
-      }
-      .detail-value {
-        font-size: 13px;
-        font-weight: 700;
-        color: var(--dark);
-      }
-
-      .detail-amount {
-        font-size: 24px;
-        font-weight: 700;
-        text-align: center;
-        padding: 1rem 0;
-        letter-spacing: -0.5px;
-      }
-
-      .detail-amount.out {
-        color: #c0392b;
-      }
-      .detail-amount.in {
-        color: #2e7d32;
-      }
-
-      /* 빈 상태 */
-      .empty {
-        background: #fff;
-        border-radius: 20px;
-        border: 2px dashed var(--pink-border);
-        padding: 3rem 2rem;
-        text-align: center;
-      }
-
-      .empty-icon {
-        font-size: 40px;
-        margin-bottom: 1rem;
-      }
-      .empty-title {
-        font-size: 16px;
-        font-weight: 700;
-        color: var(--dark);
-        margin-bottom: 8px;
-      }
-      .empty-desc {
-        font-size: 13px;
-        color: var(--text-muted);
-      }
-
-      footer {
-        padding: 1.5rem 3rem;
-        text-align: center;
-        border-top: 1px solid var(--pink-border);
-        background: #fff;
-      }
-
-      footer p {
-        font-size: 12px;
-        color: var(--text-muted);
-      }
-
-      @keyframes fadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes slideUp {
-        from {
-          transform: translateY(100%);
-        }
-        to {
-          transform: translateY(0);
-        }
-      }
-
-      @media (max-width: 480px) {
-        nav {
-          padding: 1rem 1.5rem;
-        }
-        .main {
-          padding: 1.5rem 1rem;
-        }
-        .summary-row {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/pages/history.css" />
   </head>
   <body>
     <nav>
@@ -472,10 +19,9 @@
       <a href="dashboard.html" class="nav-back">← 대시보드</a>
     </nav>
 
-    <div class="main">
+    <div class="main-md">
       <div class="page-title">📋 거래 내역</div>
 
-      <!-- 계좌 선택 -->
       <div class="account-selector">
         <span class="account-selector-label">계좌 선택</span>
         <select>
@@ -483,7 +29,6 @@
         </select>
       </div>
 
-      <!-- 필터 -->
       <div class="filter-bar">
         <button class="filter-btn active" onclick="setFilter(this, 'all')">
           전체
@@ -499,7 +44,6 @@
         </button>
       </div>
 
-      <!-- 요약 -->
       <div class="summary-row">
         <div class="summary-card">
           <div class="summary-card-label">이번 달 총 송금</div>
@@ -511,7 +55,6 @@
         </div>
       </div>
 
-      <!-- 거래 내역 -->
       <div class="history-list" id="historyList">
         <div class="history-date-label">2026년 5월 13일</div>
 
@@ -523,8 +66,7 @@
           <div class="history-icon send">💸</div>
           <div class="history-info">
             <div class="history-type">
-              송금
-              <span class="history-badge completed">완료</span>
+              송금 <span class="history-badge completed">완료</span>
             </div>
             <div class="history-desc">정선우 → JEONG-****-8940</div>
           </div>
@@ -544,8 +86,7 @@
           <div class="history-icon receive">📥</div>
           <div class="history-info">
             <div class="history-type">
-              수신
-              <span class="history-badge completed">완료</span>
+              수신 <span class="history-badge completed">완료</span>
             </div>
             <div class="history-desc">이준엽 → 내 계좌</div>
           </div>
@@ -565,8 +106,7 @@
           <div class="history-icon send">💸</div>
           <div class="history-info">
             <div class="history-type">
-              송금
-              <span class="history-badge suspicious">⚠️ 의심</span>
+              송금 <span class="history-badge suspicious">⚠️ 의심</span>
               <span class="history-badge pending">승인 대기</span>
             </div>
             <div class="history-desc">김민준 → JEONG-****-1234</div>
@@ -585,8 +125,7 @@
           <div class="history-icon send">💸</div>
           <div class="history-info">
             <div class="history-type">
-              송금
-              <span class="history-badge rejected">거절됨</span>
+              송금 <span class="history-badge rejected">거절됨</span>
             </div>
             <div class="history-desc">박지수 → JEONG-****-5678</div>
           </div>
@@ -603,9 +142,8 @@
       </div>
     </div>
 
-    <!-- 상세 모달 -->
-    <div class="modal-overlay" id="modal" onclick="closeDetail(event)">
-      <div class="modal">
+    <div class="modal-bottom" id="modal" onclick="closeDetail(event)">
+      <div class="modal-bottom-inner">
         <div class="modal-handle"></div>
         <div class="modal-title" id="modalTitle">거래 상세</div>
         <div class="detail-amount" id="modalAmount">- ₩ 10,000</div>
@@ -615,15 +153,15 @@
         </div>
         <div class="detail-row">
           <span class="detail-label">상대방</span>
-          <span class="detail-value" id="modalHolder">정선우</span>
+          <span class="detail-value" id="modalHolder">-</span>
         </div>
         <div class="detail-row">
           <span class="detail-label">상태</span>
-          <span class="detail-value" id="modalStatus">완료</span>
+          <span class="detail-value" id="modalStatus">-</span>
         </div>
         <div class="detail-row">
           <span class="detail-label">의심 거래</span>
-          <span class="detail-value" id="modalSuspicious">아니오</span>
+          <span class="detail-value" id="modalSuspicious">-</span>
         </div>
         <div class="detail-row">
           <span class="detail-label">일시</span>
@@ -636,62 +174,7 @@
       <p>© 2026 JEONG Bank. 피싱 범죄 예방을 위한 스마트 뱅킹 시스템.</p>
     </footer>
 
-    <script>
-      function setFilter(btn, type) {
-        document
-          .querySelectorAll(".filter-btn")
-          .forEach((b) => b.classList.remove("active"));
-        btn.classList.add("active");
-
-        const items = document.querySelectorAll(".history-item");
-        items.forEach((item) => {
-          if (type === "all") {
-            item.style.display = "flex";
-          } else if (type === "suspicious") {
-            item.style.display = item.dataset.type.includes("suspicious")
-              ? "flex"
-              : "none";
-          } else {
-            item.style.display = item.dataset.type.includes(type)
-              ? "flex"
-              : "none";
-          }
-        });
-      }
-
-      function openDetail(type, holder, amount, status, suspicious) {
-        const isOut = type === "send";
-        document.getElementById("modalTitle").textContent = isOut
-          ? "송금 상세"
-          : "수신 상세";
-        document.getElementById("modalAmount").textContent =
-          (isOut ? "- " : "+ ") + "₩ " + amount;
-        document.getElementById("modalAmount").className =
-          "detail-amount " + (isOut ? "out" : "in");
-        document.getElementById("modalType").textContent = isOut
-          ? "송금"
-          : "수신";
-        document.getElementById("modalHolder").textContent = holder;
-
-        const statusMap = {
-          COMPLETED: "완료",
-          PENDING: "승인 대기",
-          REJECTED: "거절됨",
-        };
-        document.getElementById("modalStatus").textContent =
-          statusMap[status] || status;
-        document.getElementById("modalSuspicious").textContent = suspicious
-          ? "⚠️ 의심 거래"
-          : "정상";
-
-        document.getElementById("modal").classList.add("show");
-      }
-
-      function closeDetail(e) {
-        if (e.target === document.getElementById("modal")) {
-          document.getElementById("modal").classList.remove("show");
-        }
-      }
-    </script>
+    <script src="../js/common.js"></script>
+    <script src="../js/pages/history.js"></script>
   </body>
 </html>
